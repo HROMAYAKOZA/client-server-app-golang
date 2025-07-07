@@ -5,8 +5,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY client/client.go ./
-RUN go build -o client ./client.go
+COPY cmd/client/main.go ./
+COPY internal/client/ internal/client/
+RUN go build -o client ./main.go
 
 # чистим кеш, уменьшаем размер образа
 RUN go clean -modcache

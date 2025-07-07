@@ -33,3 +33,9 @@ func SendLog(logConn *net.Conn, serverName string, verbose *bool, msg string, ar
 		fmt.Print(line)
 	}
 }
+
+func MakeLogger(logConn *net.Conn, serverName string, verbose *bool) func(string, ...interface{}) {
+	return func(msg string, args ...interface{}) {
+		SendLog(logConn, serverName, verbose, msg, args...)
+	}
+}

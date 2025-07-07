@@ -1,8 +1,7 @@
-package main
+package logger
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"net"
 	"os"
@@ -11,9 +10,7 @@ import (
 	"time"
 )
 
-var verbose bool
-
-func createSessionLogDir() (string, error) {
+func СreateSessionLogDir() (string, error) {
 	baseDir := "logs"
 	if err := os.MkdirAll(baseDir, 0755); err != nil {
 		return "", err
@@ -30,34 +27,7 @@ func createSessionLogDir() (string, error) {
 	return sessionPath, nil
 }
 
-func main() {
-	flag.BoolVar(&verbose, "v", false, "включить подробный вывод")
-	flag.Parse()
-	logDir, err := createSessionLogDir()
-	if err != nil {
-		fmt.Println("Ошибка создания каталога логов:", err)
-		return
-	}
-	fmt.Println("Логгер запущен. Логи сохраняются в:", logDir)
-
-	ln, err := net.Listen("tcp", ":9000")
-	if err != nil {
-		fmt.Println("Ошибка запуска логгера:", err)
-		return
-	}
-	defer ln.Close()
-
-	for {
-		conn, err := ln.Accept()
-		if err != nil {
-			fmt.Println("Ошибка подключения:", err)
-			continue
-		}
-		go handleConnection(conn, logDir)
-	}
-}
-
-func handleConnection(conn net.Conn, logDir string) {
+func HandleConnection(conn net.Conn, logDir string, verbose bool) {
 	defer conn.Close()
 	scanner := bufio.NewScanner(conn)
 	var server string
