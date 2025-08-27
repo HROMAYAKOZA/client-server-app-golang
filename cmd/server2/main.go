@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 
-	"client-server-app/internal/commands"
-	"client-server-app/internal/server"
+	"github.com/HROMAYAKOZA/client-server-app-golang/internal/commands"
+	"github.com/HROMAYAKOZA/client-server-app-golang/internal/server"
 )
 
 func main() {

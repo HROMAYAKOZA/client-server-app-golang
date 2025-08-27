@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strings"
 
-	"client-server-app/pkg/utils"
+	"github.com/HROMAYAKOZA/client-server-app-golang/pkg/utils"
 )
 
 type Server struct {

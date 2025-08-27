@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"strconv"
 
-	"client-server-app/internal/server"
+	"github.com/HROMAYAKOZA/client-server-app-golang/internal/server"
 )
 
 const (

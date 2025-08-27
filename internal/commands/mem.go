@@ -4,7 +4,7 @@ import (
 	"net"
 	"syscall"
 
-	"client-server-app/internal/server"
+	"github.com/HROMAYAKOZA/client-server-app-golang/internal/server"
 )
 
 type Mem struct{}

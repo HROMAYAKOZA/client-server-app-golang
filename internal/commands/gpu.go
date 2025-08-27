@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"client-server-app/internal/server"
+	"github.com/HROMAYAKOZA/client-server-app-golang/internal/server"
 )
 
 type GPU struct{}
